@@ -151,6 +151,101 @@
     .patch-btn{font-size:.76rem;}
     .home-card{min-height:86vh;}
   }
+
+
+  /* V2: launch page, instructions page, compact studio layout */
+  #home .home-card{width:min(760px,92vw); min-height:min(470px,82vh); background:radial-gradient(circle at 50% 34%,rgba(83,255,240,.22),rgba(0,19,22,.68) 42%,rgba(0,5,6,.92) 100%);} 
+  #home .home-sub{display:none;}
+  #home .home-actions{margin-top:28px;}
+  #home .home-title{font-family:Georgia,'Times New Roman',serif; letter-spacing:.01em; transform:skew(-3deg);}
+  #startBtn{font-size:1rem; padding:15px 24px; border-radius:999px; background:linear-gradient(90deg,rgba(83,255,240,.22),rgba(255,61,242,.16),rgba(83,255,240,.2));}
+
+  .instruction-page{position:fixed; inset:0; z-index:22; overflow:auto; background:#000; padding:calc(18px + env(safe-area-inset-top)) 14px calc(24px + env(safe-area-inset-bottom));}
+  .instruction-shell{max-width:1040px; margin:0 auto; min-height:100%; display:flex; align-items:center; justify-content:center;}
+  .instruction-card{position:relative; width:100%; border:1px solid rgba(83,255,240,.34); border-radius:26px; background:linear-gradient(180deg,rgba(0,24,27,.92),rgba(0,5,7,.98)); padding:clamp(18px,4vw,34px); box-shadow:var(--shadow), inset 0 0 70px rgba(8,182,173,.08); overflow:hidden;}
+  .instruction-card:before{content:''; position:absolute; inset:0; background:repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 1px,transparent 1px 5px); pointer-events:none;}
+  .instruction-card>*{position:relative;}
+  .instruction-kicker{color:var(--teal1); letter-spacing:.18em; font-size:.78rem; text-transform:uppercase; margin-bottom:10px;}
+  .instruction-card h2{font-family:Georgia,'Times New Roman',serif; font-size:clamp(2.1rem,6vw,4.1rem); margin:0 0 12px; line-height:.95; text-shadow:2px 0 0 var(--pink),-2px 0 0 var(--teal2);}
+  .instruction-card p{color:#c7eeee; line-height:1.55;}
+  .instruction-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:12px; margin:18px 0;}
+  .instruction-mini{border:1px solid rgba(83,255,240,.2); background:rgba(0,14,16,.72); border-radius:18px; padding:14px; color:#c7eeee; line-height:1.45;}
+  .instruction-mini b{display:block; color:var(--teal1); margin-bottom:7px;}
+  .instruction-actions{display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; margin-top:16px;}
+
+  #app{height:100vh; overflow:auto;}
+  .topbar{border-radius:16px; padding:8px 10px;}
+  .brand h1{font-size:clamp(1.1rem,2.5vw,1.75rem);} 
+  .brand small{font-size:.65rem;}
+  .btn.danger,#emergencyResetBtn{border-color:rgba(255,85,85,.7)!important; color:#fff; background:linear-gradient(180deg,rgba(255,66,66,.26),rgba(25,1,3,.94)); box-shadow:0 0 16px rgba(255,66,66,.25), inset 0 0 20px rgba(255,255,255,.04);} 
+  #emergencyResetBtn{animation:dangerPulse 2.4s ease-in-out infinite;}
+  @keyframes dangerPulse{0%,100%{box-shadow:0 0 10px rgba(255,66,66,.16);}50%{box-shadow:0 0 20px rgba(255,66,66,.42),0 0 34px rgba(83,255,240,.08);}}
+  .panel{position:relative;}
+  .panel.collapsed .panel-body{display:none;}
+  .collapse-btn{font-size:.72rem!important; padding:6px 9px!important; min-height:32px!important; border-radius:9px!important; white-space:nowrap;}
+  .panel-head{min-height:46px;}
+  .panel-head .head-actions{display:flex; gap:7px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
+
+  .main-grid{grid-template-columns:1fr; align-items:start;}
+  .keys-panel{order:1;}
+  .visual-panel{order:2;}
+  .meter-panel{order:3;}
+  .bank-panel{order:4;}
+  .synth-panel{order:5;}
+  .fx-panel{order:6;}
+  .export-panel{order:7;}
+  .keyboard-stack{gap:9px;}
+  .keyboard-octave{height:clamp(104px,16vw,150px);}
+  #visualCanvas{height:clamp(170px,25vw,260px);}
+  .visual-wrap{min-height:auto;}
+  .controls-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr));}
+  .control-card{padding:10px;}
+  .control{margin:8px 0 9px;}
+  .mini-log{height:104px;}
+
+  @media (min-width: 900px){
+    .main-grid{grid-template-columns:minmax(430px,1.2fr) minmax(330px,.92fr) minmax(300px,.82fr);}
+    .keys-panel{grid-column:1 / span 2; grid-row:1;}
+    .visual-panel{grid-column:3; grid-row:1;}
+    .meter-panel{grid-column:1; grid-row:2;}
+    .bank-panel{grid-column:2; grid-row:2;}
+    .fx-panel{grid-column:3; grid-row:2 / span 2;}
+    .synth-panel{grid-column:1 / span 2; grid-row:3;}
+    .export-panel{grid-column:1 / -1; grid-row:4;}
+    #visualCanvas{height:300px;}
+    .keyboard-octave{height:136px;}
+  }
+  @media (orientation:landscape) and (max-height:680px){
+    #app{padding:6px;}
+    .app-shell{gap:8px;}
+    .topbar{position:relative; grid-template-columns:1fr auto; padding:6px 8px;}
+    .brand small{display:none;}
+    .main-grid{grid-template-columns:1.15fr .85fr .75fr; gap:8px;}
+    .panel-head{padding:8px 10px; min-height:38px;}
+    .panel-body{padding:8px;}
+    .keys-panel{grid-column:1 / span 2; grid-row:1;}
+    .visual-panel{grid-column:3; grid-row:1;}
+    .meter-panel{grid-column:1; grid-row:2;}
+    .bank-panel{grid-column:2; grid-row:2;}
+    .fx-panel{grid-column:3; grid-row:2 / span 2;}
+    .synth-panel{grid-column:1 / span 2; grid-row:3;}
+    .export-panel{grid-column:1 / -1; grid-row:4;}
+    #visualCanvas{height:170px;}
+    .keyboard-octave{height:92px;}
+    .keyboard-row-wrap{padding:7px;}
+    .octave-label{margin-bottom:4px; font-size:.68rem;}
+    .control-card h3{margin-bottom:6px;}
+    .control label,.control output{font-size:.68rem;}
+    .readout{min-height:48px; padding:8px;}
+    .toggle{min-height:34px; padding:7px 6px;}
+  }
+  @media (max-width: 640px){
+    .instruction-actions{justify-content:stretch;}
+    .instruction-actions .btn{flex:1 1 160px;}
+    .top-actions .btn{flex:1 1 auto;}
+    #visualCanvas{height:180px;}
+    .keyboard-octave{height:112px;}
+  }
 </style>
 </head>
 <body>
@@ -160,14 +255,37 @@
     <h1 class="home-title"><span class="tiny">MARIO'S</span>Sound Lab</h1>
     <p class="home-sub">A retro glitch neon sound-design playground for learning how synth patches, electric piano tones, effects, modulation, and envelopes shape a sound.</p>
     <div class="home-actions">
-      <button class="btn primary" id="startBtn">Enter Sound Lab</button>
-      <button class="btn pink" id="openIntroBtn">What does this do?</button>
+      <button class="btn primary" id="startBtn">Launch Sound Lab</button>
     </div>
     <div class="designer">Designed by Mario Garcia.</div>
   </div>
 </section>
 
-<div class="modal" id="introModal">
+<section id="instructions" class="instruction-page hidden">
+  <div class="instruction-shell">
+    <div class="instruction-card">
+      <div class="instruction-kicker">Sound-design trainer // Studio interface</div>
+      <h2>Welcome to Mario's Sound Lab</h2>
+      <p>This app is designed to help users learn how iconic synth, electric piano, and bass sounds are built. Choose a sound bank, play the two-octave keyboard, stack chords, shape the patch, add effects, and watch the motion display react to what you play.</p>
+      <div class="instruction-grid">
+        <div class="instruction-mini"><b>1. Play the keys</b>Tap or click the piano. Row 2 can collapse when you need more room. Chord Stack lets you build a chord one note at a time.</div>
+        <div class="instruction-mini"><b>2. Shape the source</b>Wave Blend, Detune, Sub Tone, Noise, Envelope, Filter, Drive, and Tone Tilt show how a raw patch becomes expressive.</div>
+        <div class="instruction-mini"><b>3. Add motion</b>The Modulator is an LFO. It can move filter, amp, pitch, or pan to create wobble, tremolo, vibrato, and stereo drift.</div>
+        <div class="instruction-mini"><b>4. Use effects</b>Chorus widens, Flanger swooshes, Phaser swirls, Delay repeats, and Reverb creates space.</div>
+        <div class="instruction-mini"><b>5. Watch the visualizer</b>The airy multicolor motion window responds to note, velocity, chord density, and output level.</div>
+        <div class="instruction-mini"><b>6. Save your sound</b>Export a Sound Lab preset JSON or bounce a WAV preview. For Logic Pro, drag the WAV into Quick Sampler/Sampler.</div>
+      </div>
+      <p><b>Emergency Reset:</b> If a note ever sticks or the engine glitches, press the red Emergency Reset button. It force-kills audio, clears held notes, resets controls to the current patch, and rebuilds the engine.</p>
+      <p><b>DAW note:</b> A browser cannot create a real AUv3, VST, or Logic instrument patch by itself. This app exports browser-safe presets and audio previews, while a true MIDI-playable DAW patch requires a dedicated plug-in build.</p>
+      <div class="instruction-actions">
+        <button class="btn" id="backHomeBtn">Back</button>
+        <button class="btn primary" id="enterLabBtn">Open the Lab</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal hidden" id="introModal">
   <div class="modal-card">
     <h2>Welcome to Mario's Sound Lab</h2>
     <p>This app is designed to teach sound design through touch. Pick a sound bank, play the two-octave keyboard, stack chords, reshape the tone, and listen to how each control changes the final patch.</p>
@@ -194,13 +312,13 @@
       </div>
       <div class="top-actions">
         <button class="btn small" id="homeBtn">Home</button>
-        <button class="btn small" id="panicBtn" data-help="Panic instantly stops all active notes and clears any stuck audio.">Panic</button>
+        <button class="btn small danger" id="emergencyResetBtn" data-help="Emergency Reset force-kills all audio, clears stuck notes, resets the current patch controls, and rebuilds the audio engine.">Emergency Reset</button>
         <button class="btn small" id="guideBtn" data-help="Guide mode highlights controls. Turn it on, then tap any highlighted area to learn what it does.">Guide</button>
       </div>
     </header>
 
     <section class="main-grid">
-      <article class="panel" data-help="Choose between lead synths, electric pianos, and synth basses. Each patch starts with a different classic sound-design recipe.">
+      <article class="panel bank-panel" data-help="Choose between lead synths, electric pianos, and synth basses. Each patch starts with a different classic sound-design recipe.">
         <div class="panel-head"><div class="panel-title">Sound Banks</div><button class="btn small" id="resetPatchBtn">Reset Patch</button></div>
         <div class="panel-body">
           <div class="bank-grid" id="bankButtons"></div>
@@ -208,7 +326,7 @@
         </div>
       </article>
 
-      <article class="panel" data-help="This display listens to what you play and estimates the note name, active notes, and chord quality.">
+      <article class="panel meter-panel" data-help="This display listens to what you play and estimates the note name, active notes, and chord quality.">
         <div class="panel-head"><div class="panel-title">Note + Chord Meter</div><div id="polyLabel" style="color:var(--muted);font-size:.74rem;">0 voices</div></div>
         <div class="panel-body">
           <div class="readout-grid">
@@ -224,14 +342,14 @@
         </div>
       </article>
 
-      <article class="panel" data-help="The visual feedback window reacts to pitch, velocity, chord density, and output level. It is meant to make sound design feel visual and musical.">
+      <article class="panel visual-panel" data-help="The visual feedback window reacts to pitch, velocity, chord density, and output level. It is meant to make sound design feel visual and musical.">
         <div class="panel-head"><div class="panel-title">Air Motion Visualizer</div><button class="btn small" id="visualModeBtn">Mode</button></div>
         <div class="panel-body visual-wrap">
           <canvas id="visualCanvas"></canvas>
         </div>
       </article>
 
-      <article class="panel span-2" data-help="These controls shape the synth voice before effects. This is where the basic sound is built.">
+      <article class="panel span-2 synth-panel" data-help="These controls shape the synth voice before effects. This is where the basic sound is built.">
         <div class="panel-head"><div class="panel-title">Sound Design Controls</div><button class="btn small" id="randomizeBtn">Spark Random</button></div>
         <div class="panel-body">
           <div class="controls-grid">
@@ -270,7 +388,7 @@
         </div>
       </article>
 
-      <article class="panel" data-help="Effects process the patch after the raw sound is created. Use these to create width, movement, space, echoes, and atmosphere.">
+      <article class="panel fx-panel" data-help="Effects process the patch after the raw sound is created. Use these to create width, movement, space, echoes, and atmosphere.">
         <div class="panel-head"><div class="panel-title">Effects Rack</div><button class="btn small" id="fxBypassBtn">FX Bypass</button></div>
         <div class="panel-body">
           <div class="toggle-row">
@@ -290,7 +408,7 @@
         </div>
       </article>
 
-      <article class="panel span-2" data-help="Play the two-octave keyboard. The second octave can collapse to save space on phones and landscape screens.">
+      <article class="panel span-2 keys-panel" data-help="Play the two-octave keyboard. The second octave can collapse to save space on phones and landscape screens.">
         <div class="panel-head">
           <div class="panel-title">Two-Octave Touch Keyboard</div>
           <div class="keyboard-tools">
@@ -313,7 +431,7 @@
         </div>
       </article>
 
-      <article class="panel" data-help="Export your design. Preset JSON can be reloaded in this app. WAV preview can be dragged into Logic, Ableton, FL Studio, GarageBand, or another sampler.">
+      <article class="panel export-panel" data-help="Export your design. Preset JSON can be reloaded in this app. WAV preview can be dragged into Logic, Ableton, FL Studio, GarageBand, or another sampler.">
         <div class="panel-head"><div class="panel-title">Export + Learn</div></div>
         <div class="panel-body">
           <div class="button-grid">
@@ -421,8 +539,15 @@
     while(el.children.length > 80) el.lastChild.remove();
   }
 
+  function showInstructions(){
+    $('#home').classList.add('hidden');
+    $('#instructions').classList.remove('hidden');
+    $('#app').classList.add('hidden');
+    $('#introModal').classList.add('hidden');
+  }
   function startApp(){
     $('#home').classList.add('hidden');
+    $('#instructions').classList.add('hidden');
     $('#app').classList.remove('hidden');
     $('#introModal').classList.add('hidden');
     ensureAudio();
@@ -432,12 +557,20 @@
       requestAnimationFrame(modulationTick);
     }
   }
+  function returnHome(){
+    hardReset(true);
+    $('#app').classList.add('hidden');
+    $('#instructions').classList.add('hidden');
+    $('#home').classList.remove('hidden');
+  }
 
-  $('#startBtn').addEventListener('click', startApp);
-  $('#enterFromIntroBtn').addEventListener('click', startApp);
-  $('#openIntroBtn').addEventListener('click', () => $('#introModal').classList.remove('hidden'));
-  $('#closeIntroBtn').addEventListener('click', () => $('#introModal').classList.add('hidden'));
-  $('#homeBtn').addEventListener('click', () => { $('#app').classList.add('hidden'); $('#home').classList.remove('hidden'); });
+  $('#startBtn')?.addEventListener('click', showInstructions);
+  $('#enterLabBtn')?.addEventListener('click', startApp);
+  $('#backHomeBtn')?.addEventListener('click', () => { $('#instructions').classList.add('hidden'); $('#home').classList.remove('hidden'); });
+  $('#enterFromIntroBtn')?.addEventListener('click', startApp);
+  $('#openIntroBtn')?.addEventListener('click', showInstructions);
+  $('#closeIntroBtn')?.addEventListener('click', () => $('#introModal').classList.add('hidden'));
+  $('#homeBtn')?.addEventListener('click', returnHome);
 
   function ensureAudio(){
     if(audioCtx){ if(audioCtx.state === 'suspended') audioCtx.resume(); return; }
@@ -681,30 +814,66 @@
       voice.oscs.forEach(o => o.stop(now + Math.max(.06, rel) + .03));
       setTimeout(() => {
         try{ voice.output.disconnect(); }catch(e){}
-        activeVoices.delete(midi);
-        highlightKey(midi, false);
-        updateMeters();
+        if(activeVoices.get(midi) === voice){
+          activeVoices.delete(midi);
+          highlightKey(midi, false);
+          updateMeters();
+        }
       }, Math.ceil((Math.max(.06, rel)+.08)*1000));
     }catch(e){
-      activeVoices.delete(midi);
+      if(activeVoices.get(midi) === voice) activeVoices.delete(midi);
       highlightKey(midi, false);
     }
   }
 
   function noteOn(midi, velocity=0.9){
     ensureAudio();
-    if(activeVoices.has(midi)) releaseVoice(midi, true);
+    if(activeVoices.has(midi)) forceStopVoice(midi);
     createVoice(midi, velocity);
   }
   function noteOff(midi){ if(!stacked) releaseVoice(midi); }
-  function panic(){
-    Array.from(activeVoices.keys()).forEach(m => releaseVoice(m, true));
+  function forceStopVoice(midi){
+    const voice = activeVoices.get(midi);
+    if(!voice) return;
+    try{
+      const now = audioCtx ? audioCtx.currentTime : 0;
+      voice.oscs?.forEach(o => { try{o.stop(now);}catch(e){} });
+      if(voice.noise){ try{voice.noise.stop(now);}catch(e){} }
+      try{ voice.output?.disconnect(); }catch(e){}
+    }catch(e){}
+    activeVoices.delete(midi);
+    highlightKey(midi, false);
+  }
+  function killAllVoices(){
+    Array.from(activeVoices.keys()).forEach(m => forceStopVoice(m));
+    activeVoices.clear();
     heldPointers.clear();
+    if(typeof downKeys !== 'undefined') downKeys.clear();
     $$('.key.active').forEach(k => k.classList.remove('active'));
     updateMeters();
-    log('Panic clear.');
   }
-  $('#panicBtn').addEventListener('click', panic);
+  function panic(){
+    killAllVoices();
+    log('Panic clear: all active notes killed.');
+  }
+  function hardReset(silent=false){
+    killAllVoices();
+    stacked = false;
+    fxBypass = false;
+    $('#stackBtn').textContent = 'Chord Stack: Off';
+    $('#stackBtn').classList.remove('active');
+    $('#fxBypassBtn').classList.remove('active');
+    $('#fxBypassBtn').textContent = 'FX Bypass';
+    loadPatch();
+    if(audioCtx){
+      try{ audioCtx.close(); }catch(e){}
+    }
+    audioCtx = mainBus = preGain = driveNode = analyser = masterGain = null;
+    chorus = flanger = phaser = delayFX = reverbFX = stereoPanner = null;
+    noiseBuffer = null;
+    if(!silent){ ensureAudio(); log('Emergency Reset complete: engine rebuilt and patch restored.'); }
+  }
+  $('#emergencyResetBtn')?.addEventListener('click', () => hardReset(false));
 
   function createKeyboard(container, octave){
     container.innerHTML = '';
@@ -733,33 +902,75 @@
   }
 
   function addKeyEvents(key, midi){
+    const releasePointer = (e) => {
+      if(stacked) return;
+      const midiHeld = heldPointers.get(e.pointerId);
+      if(midiHeld !== undefined){
+        noteOff(midiHeld);
+        heldPointers.delete(e.pointerId);
+      }
+    };
     key.addEventListener('pointerdown', e => {
       e.preventDefault();
       ensureAudio();
-      key.setPointerCapture?.(e.pointerId);
+      try{ key.setPointerCapture?.(e.pointerId); }catch(err){}
       const rect = key.getBoundingClientRect();
       const vel = clamp(1 - ((e.clientY - rect.top) / Math.max(1, rect.height)) * .38, .55, 1);
       if(stacked){
-        if(activeVoices.has(midi)) releaseVoice(midi, true); else noteOn(midi, vel);
+        if(activeVoices.has(midi)) forceStopVoice(midi); else noteOn(midi, vel);
       } else {
+        if(heldPointers.has(e.pointerId)) releasePointer(e);
         heldPointers.set(e.pointerId, midi);
         noteOn(midi, vel);
       }
     });
-    key.addEventListener('pointerup', e => {
-      if(stacked) return;
-      const midiHeld = heldPointers.get(e.pointerId);
-      if(midiHeld !== undefined){ noteOff(midiHeld); heldPointers.delete(e.pointerId); }
-    });
-    key.addEventListener('pointercancel', e => {
-      const midiHeld = heldPointers.get(e.pointerId);
-      if(midiHeld !== undefined){ noteOff(midiHeld); heldPointers.delete(e.pointerId); }
-    });
+    key.addEventListener('pointerup', releasePointer);
+    key.addEventListener('pointercancel', releasePointer);
+    key.addEventListener('lostpointercapture', releasePointer);
+    key.addEventListener('pointerleave', e => { if(e.buttons === 0) releasePointer(e); });
+    key.addEventListener('contextmenu', e => e.preventDefault());
   }
+
+  window.addEventListener('pointerup', e => {
+    const midiHeld = heldPointers.get(e.pointerId);
+    if(midiHeld !== undefined){ noteOff(midiHeld); heldPointers.delete(e.pointerId); }
+  }, true);
+  window.addEventListener('pointercancel', e => {
+    const midiHeld = heldPointers.get(e.pointerId);
+    if(midiHeld !== undefined){ noteOff(midiHeld); heldPointers.delete(e.pointerId); }
+  }, true);
+  window.addEventListener('blur', panic);
+  document.addEventListener('visibilitychange', () => { if(document.hidden) panic(); });
 
   function highlightKey(midi, on){
     $$(`.key[data-midi="${midi}"]`).forEach(k => k.classList.toggle('active', on));
   }
+
+  function setupPanelCollapse(){
+    $('.panel').forEach((panel, idx) => {
+      const head = $('.panel-head', panel);
+      if(!head || $('.collapse-btn', head)) return;
+      let actions = $('.head-actions', head);
+      if(!actions){
+        actions = document.createElement('div');
+        actions.className = 'head-actions';
+        while(head.children.length > 1){ actions.appendChild(head.lastElementChild); }
+        head.appendChild(actions);
+      }
+      const btn = document.createElement('button');
+      btn.className = 'btn small collapse-btn';
+      btn.type = 'button';
+      btn.textContent = 'Collapse';
+      btn.dataset.help = 'Collapse this studio module to save space. Tap Open to bring it back.';
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        panel.classList.toggle('collapsed');
+        btn.textContent = panel.classList.contains('collapsed') ? 'Open' : 'Collapse';
+      });
+      actions.appendChild(btn);
+    });
+  }
+  setupPanelCollapse();
 
   createKeyboard($('#octave1'), 3);
   createKeyboard($('#octave2'), 4);
@@ -1170,7 +1381,7 @@
       if(r.gain <= .001) return;
       const osc = ctx.createOscillator(); const g = ctx.createGain();
       osc.type = r.type; osc.frequency.value = freq*r.mult; osc.detune.value = r.detune || 0; g.gain.value = r.gain;
-      osc.connect(g); g.connect(amp); osc.start(start); osc.stop(start+length+r+.1);
+      osc.connect(g); g.connect(amp); osc.start(start); osc.stop(start + length + Math.max(.08, params.release/1000) + .1);
     });
   }
 
